@@ -1,0 +1,6 @@
+model_checkpoint_path: "CASRCNN_C9.model-116"
+all_model_checkpoint_paths: "CASRCNN_C9.model-98"
+all_model_checkpoint_paths: "CASRCNN_C9.model-101"
+all_model_checkpoint_paths: "CASRCNN_C9.model-106"
+all_model_checkpoint_paths: "CASRCNN_C9.model-111"
+all_model_checkpoint_paths: "CASRCNN_C9.model-116"

@@ -1,0 +1,6 @@
+model_checkpoint_path: "CASRCNN_C4.model-64"
+all_model_checkpoint_paths: "CASRCNN_C4.model-51"
+all_model_checkpoint_paths: "CASRCNN_C4.model-56"
+all_model_checkpoint_paths: "CASRCNN_C4.model-58"
+all_model_checkpoint_paths: "CASRCNN_C4.model-61"
+all_model_checkpoint_paths: "CASRCNN_C4.model-64"
