@@ -1,3 +1,4 @@
+#import methods/packages
 from utils import (
   read_data, 
   input_setup, 
@@ -87,7 +88,7 @@ class SRCNN(object):
         result=list()
         #self.sess.run(new_init_op)
         start_time=time.time()
-        for batch in range(tst_batch_count):
+        for batch in range(0,tst_batch_count):
             inx=tst_data_loader.get_batch()
             X=X_test[inx].view()#self.sess.run(next_batch)
             y_pred = self.pred.eval({self.images: X})
@@ -104,17 +105,15 @@ class SRCNN(object):
         print(len(result))
         output=list()
         for i in result:
-            for j in range(i.shape[0]):
+            for j in range(0,i.shape[0]):
                 output.append(i[j])
-        print(len(output))
-        print(output[0].shape)
+
         
         #result=[self.sess.run(i) for i in result]
         patch_inx=0
-        for i in range(len(nxny_list)):
+        for i in range(0,len(nxny_list)):
             nx,ny=nxny_list[i]
             img=merge(output[patch_inx:(patch_inx+nx*ny)],(nx,ny))
-            print('img shape@',i,img.shape)
             patch_inx+=nx*ny
             imsave(img,namelist[i].replace('.bmp','.bmp.c'+str(self.config.c_dim)))
                     
@@ -141,13 +140,7 @@ class SRCNN(object):
                                    batchSize=self.config.test_batch_size,
                                    shuffle=False)
         
-        #data description
-        print('X_train.shape',X_train.shape)
-        print('y_train.shape',y_train.shape)
-        print('X_test.shape',X_test.shape)
-        print('y_test.shape',y_test.shape)
-        #del X_train,y_train,X_test,y_test
-        #gc.collect()
+
 
         # Stochastic gradient descent with the standard backpropagation
         self.train_op = tf.train.AdamOptimizer(learning_rate=self.config.learning_rate).minimize(self.loss)
@@ -161,6 +154,7 @@ class SRCNN(object):
             print(" [!] Load failed...")
         #if training
         print("Training...")
+        #the following is instantiation of placeholders for tensorboard statistics
         batch_count=int(math.ceil(X_train.shape[0]/self.config.batch_size))
         tst_batch_count=int(math.ceil(X_test.shape[0]/self.config.test_batch_size))
         best_PSNR=0.
