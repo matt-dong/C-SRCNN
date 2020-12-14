@@ -164,7 +164,7 @@ def generate_patch(h,w,input_,label_,padding,config):
 
             # center/center
             sub_input5 = input_[x:x + config.image_size, y:y + config.image_size]  # [33 x 33]
-            sub_label = label_[int(x + padding):int(x + padding + config.label_size), int(y + padding):int(y + padding + config.label_size)]  # [21 x 21]
+            sub_label = label_[int(x + padding):int(x + padding + config.label_size), int(y + padding):int(y + padding + config.label_size)]  # [33 x 33]
 
             # right/center
             sub_input6 = input_[x + config.image_size:x + 2 * config.image_size, y:y + config.image_size]  # [33 x 33]
@@ -263,7 +263,7 @@ def input_setup(sess, config):
 
 def input_setup_test(sess, config):
     """
-    Read image files and make their sub-images and saved them as a h5 file format.
+    Read image files and make their sub-images and save them as a h5 file format.
     """
     #if h5 exists, skip
     if not config.make_patch:
